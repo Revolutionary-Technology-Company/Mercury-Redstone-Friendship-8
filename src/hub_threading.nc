@@ -1,0 +1,42 @@
+( ============================================================================ )
+( CNC TOOLPATH: INTERNAL STUB ACME THREAD MILLING PASS                         )
+( HARDWARE BASE: 12.0" ID HEAVY WINDOW RECEIVING HUB FORGING INTERFACE         )
+( SPECIFICATION: 6.250"-4 STUB ACME-2G COARSE COAXIAL HELICAL TOOTH FLANGE    )
+( ============================================================================ )
+
+G20 ( Enforce Inch Measurement Units Mode )
+G90 G94 G17 ( Absolute Coordinates, Feed per Minute Mode, XY Machining Plane Selection )
+G00 Z1.0 ( Rapid Traverse Clearance Z Lift to Safe Plane Height )
+
+( --- CNC MACHINE TOOL DEFINITION BLOCK --- )
+( TOOL 04: 1.000" DIAMETER SOLID CARBIDE MULTI-TOOTH ACME INTERPOLATION CUTTER )
+T04 M06 ( Execute Automated Mechanical Tool Change Sequence )
+S1450 M03 ( Engage Lathe Spindle: 1450 RPM Clockwise Rotational Direction )
+M08 ( Engage High-Pressure Water-Soluble Flood Coolant Pump to Wash Titanium Chips )
+
+( --- MULTI-PASS STEPPED DEPTH HEAVY INITIAL PROFILE CUTS --- )
+G00 X0.0 Y0.0 ( Rapid Drive to Absolute Hub Target Center Reference Coordinate Axis )
+G00 Z0.45 ( Rapid Entry Drop Down into Center Clearance Pocket Opening )
+
+( --- ROUGHING PASS LOOP STEP 1 --- )
+G01 X2.850 Y0.0 F12.5 ( Controlled Linear Linear Lead-In Feed to Core Cut Wall Radius Line )
+G03 X2.850 Y0.0 Z0.700 I-2.850 J0.0 F8.2 ( 360-Degree Counter-Clockwise Helical Climbing Helix Rise )
+G01 X0.0 Y0.0 F25.0 ( Rapid Centralizing Sweep Extraction Away From Thread Teeth Edge )
+
+( --- ROUGHING PASS LOOP STEP 2 --- )
+G00 Z0.45 ( Return Drop to Start Floor Height Z Alignment Coordinate Line )
+G01 X2.925 Y0.0 F12.5 ( Deeper Step Injection Into Cut Wall Perimeter Edge Profile )
+G03 X2.925 Y0.0 Z0.700 I-2.925 J0.0 F8.2 ( Continuous Concentric Thread Wave Helical Rise Path )
+G01 X0.0 Y0.0 F25.0 ( Center-Out Linear Retract Path to Clear Cutter Edges )
+
+( --- FINAL PRECISION TOOLPATH FINISHING PROFILE PASS --- )
+G00 Z0.45 ( Return Drop to Baseline Z Start Entry Axis Alignment Height Line )
+G01 X3.000 Y0.0 F10.0 ( Clean Face Final Finishing Edge Position Line Entry Cut )
+G03 X3.000 Y0.0 Z0.700 I-3.000 J0.0 F6.5 ( Ultra-Precision Master 4-TPI Thread Profile Helical Path )
+G01 X0.0 Y0.0 F30.0 ( Smooth Linear Center Retraction Pass Out of Machined Teeth Face )
+
+( --- CYCLE SAFE-STATE PARKING EXTRACT TERMINATION END SEQUENCE --- )
+M09 ( Shut Down High-Pressure Flood Coolant Pump Line Flow Loop )
+G00 Z2.500 M05 ( Rapid Extraction Z Lift / Absolute Spindle Braking Stop Sequence )
+G28 G91 X0 Y0 Z0 ( Return Machine Gantry Axes To Home Reference Zero Park Positions )
+M30 ( Complete Memory Program End and Auto-Rewind Control File Index Loop )
