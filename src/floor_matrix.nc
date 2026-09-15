@@ -1,0 +1,51 @@
+( ============================================================================ )
+( CNC TOOLPATH: RADIAL BEAM FLOOR MATRIX INTERLOCK SKELETON                   )
+( STRUCTURAL COMPLIANCE: 0.062" MAXIMUM SKELETON WALL RATIO CEILING           )
+( MATERIAL PROFILE: TI-6AL-4V SOLID AEROSPACE GRADE TITANIUM STOCK            )
+( ============================================================================ )
+
+G20 ( Enforce Inch Measurement Units Mode )
+G90 G94 G17 ( Absolute Coordinates, Feed per Minute Mode, XY Machining Plane Selection )
+G00 Z2.0 ( Rapid Traverse Clearance Z Lift to Safe Plane Height )
+
+( --- CNC MACHINE TOOL DEFINITION BLOCK --- )
+( TOOL 12: 0.250" TWO-FLUTE RUGGED HIGH-FEED SOLID CARBIDE ROUGHING ENDMILL )
+T12 M06 ( Execute Automated Mechanical Tool Change Sequence )
+S2200 M03 ( Engage Spindle Drive: 2200 RPM Clockwise Rotational Direction )
+M08 ( Engage High-Pressure Water-Soluble Flood Coolant to Prevent Titanium Tears )
+
+( --- CYCLE PROFILE SEGMENT 1: CARVING THE RADIAL BEAM CHANNELS --- )
+G00 X0.0 Y0.0 ( Rapid Drive to Center Axis Floor Coordinates Point )
+G01 Z-0.062 F10.0 ( Controlled Plunge to Maximum Regulated Framing Depth Baseline )
+
+( Spoke 1: 0-Degree Radial Path Cut )
+G01 X34.75 Y0.0 F14.5 ( Clean Linear Direct Outward Pass to Ring Shoulder Boundary )
+G00 Z1.0 ( Lift to Clearance Plane Height )
+G00 X0.0 Y0.0 ( Rapid Return to Center Point )
+
+( Spoke 2: 30-Degree Radial Path Cut )
+G01 Z-0.062 F10.0 ( Re-engage Mill to Framing Floor Level )
+G01 X30.09 Y17.37 F14.5 ( Angle Cut Track Along 30-Degree Vector Line )
+G00 Z1.0 ( Lift to Clearance Plane Height )
+G00 X0.0 Y0.0 ( Rapid Return to Center Point )
+
+( Spoke 3: 60-Degree Radial Path Cut )
+G01 Z-0.062 F10.0 ( Re-engage Mill to Framing Floor Level )
+G01 X17.37 Y30.09 F14.5 ( Angle Cut Track Along 60-Degree Vector Line )
+G00 Z1.0 ( Lift to Clearance Plane Height )
+
+( --- CYCLE PROFILE SEGMENT 2: CARVING THE INNER CONCENTRIC SUPPORT LOOPS --- )
+G00 X18.625 Y0.0 ( Navigate Tool Box to Concentric Ring Loop 1 Start Point )
+G01 Z-0.062 F8.0 ( Plunge Cutter to Structural Baseline Floor Level )
+G03 X18.625 Y0.0 I-18.625 J0.0 F12.0 ( Execute 360-Degree Continuous Circle Orbit Cut )
+G00 Z1.0 ( Lift to Clearance Plane Height )
+
+G00 X24.833 Y0.0 ( Navigate Tool Box to Concentric Ring Loop 2 Start Point )
+G01 Z-0.062 F8.0 ( Plunge Cutter to Structural Baseline Floor Level )
+G03 X24.833 Y0.0 I-24.833 J0.0 F12.0 ( Execute 360-Degree Continuous Circle Orbit Cut )
+
+( --- CYCLE SAFE-STATE PARKING EXTRACT TERMINATION END SEQUENCE --- )
+M09 ( Shut Down High-Pressure Flood Coolant Pump Line Flow Loop )
+G00 Z2.500 M05 ( Rapid Height Extraction Z-Lift / Spindle Drive Motor Stop )
+G28 G90 X0 Y0 Z0 ( Force Complete Gantry Return Loop back To Home Reference Ground Zero )
+M30 ( Complete Memory Program End and Auto-Rewind Control File Index Loop )
