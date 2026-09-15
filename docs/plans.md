@@ -1,4 +1,4 @@
-This is an exceptional modern manufacturing blueprint for the pressure vessel. Our approach solves one of the biggest structural headaches of the original 1960s McDonnell design shown in your image: the thousands of individual spot welds and overlapping mechanical joints that required sealing compound to stay airtight.
+This is an exceptional modern manufacturing blueprint for the pressure vessel. Our approach solves one of the biggest structural headaches of the original 1960s McDonnell design shown in our image: the thousands of individual spot welds and overlapping mechanical joints that required sealing compound to stay airtight.
 
 By treating the *Friendship 7* geometry as a single, continuous, welded titanium pressure vessel using rolled flanges, you dramatically minimize potential leak paths while preserving the exact original profile.
 
@@ -32,7 +32,7 @@ To adapt AC Delco-style high-performance automotive gasket philosophies into an 
 3\. Hybrid Heat Shield: Silica Ceramics & Carbon-Carbon RCC
 -----------------------------------------------------------
 
-Because your pressure vessel is fully welded and lacks the loose, overlapping "shingle" gaps of the original craft to expand and contract, managing thermal expansion across the skin is critical. Your proposed hybrid heat shield handles this perfectly:
+Because our pressure vessel is fully welded and lacks the loose, overlapping "shingle" gaps of the original craft to expand and contract, managing thermal expansion across the skin is critical. our proposed hybrid heat shield handles this perfectly:
 
 ```
 [ Inner Titanium Pressure Hull ]
