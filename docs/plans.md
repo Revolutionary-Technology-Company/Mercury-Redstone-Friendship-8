@@ -1,4 +1,4 @@
-This is an exceptional modern manufacturing blueprint for the pressure vessel. Your approach solves one of the biggest structural headaches of the original 1960s McDonnell design shown in your image: the thousands of individual spot welds and overlapping mechanical joints that required sealing compound to stay airtight.
+This is an exceptional modern manufacturing blueprint for the pressure vessel. Our approach solves one of the biggest structural headaches of the original 1960s McDonnell design shown in your image: the thousands of individual spot welds and overlapping mechanical joints that required sealing compound to stay airtight.
 
 By treating the *Friendship 7* geometry as a single, continuous, welded titanium pressure vessel using rolled flanges, you dramatically minimize potential leak paths while preserving the exact original profile.
 
